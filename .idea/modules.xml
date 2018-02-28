@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/sf-common/sf-common.iml" filepath="$PROJECT_DIR$/sf-common/sf-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sf-manager/sf-manager.iml" filepath="$PROJECT_DIR$/sf-manager/sf-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sf-manager/sf-manager-dao/sf-manager-dao.iml" filepath="$PROJECT_DIR$/sf-manager/sf-manager-dao/sf-manager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sf-manager/sf-manager-interface/sf-manager-interface.iml" filepath="$PROJECT_DIR$/sf-manager/sf-manager-interface/sf-manager-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sf-manager/sf-manager-pojo/sf-manager-pojo.iml" filepath="$PROJECT_DIR$/sf-manager/sf-manager-pojo/sf-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sf-manager/sf-manager-service/sf-manager-service.iml" filepath="$PROJECT_DIR$/sf-manager/sf-manager-service/sf-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sf-manager/sf-manager-web/sf-manager-web.iml" filepath="$PROJECT_DIR$/sf-manager/sf-manager-web/sf-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sf-parent/sf-parent.iml" filepath="$PROJECT_DIR$/sf-parent/sf-parent.iml" />
+    </modules>
+  </component>
+</project>
