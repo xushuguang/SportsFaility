@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.james.dao.UserAddressMapper" >
+  <resultMap id="BaseResultMap" type="com.james.pojo.po.UserAddress" >
+    <id column="aid" property="aid" jdbcType="BIGINT" />
+    <result column="uid" property="uid" jdbcType="BIGINT" />
+    <result column="plot" property="plot" jdbcType="VARCHAR" />
+    <result column="buildnum" property="buildnum" jdbcType="BIGINT" />
+    <result column="unitnum" property="unitnum" jdbcType="BIGINT" />
+    <result column="roomnum" property="roomnum" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    aid, uid, plot, buildnum, unitnum, roomnum
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.james.pojo.po.UserAddressExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_address
+    where aid = #{aid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user_address
+    where aid = #{aid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.james.pojo.po.UserAddressExample" >
+    delete from user_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.james.pojo.po.UserAddress" >
+    insert into user_address (aid, uid, plot, 
+      buildnum, unitnum, roomnum
+      )
+    values (#{aid,jdbcType=BIGINT}, #{uid,jdbcType=BIGINT}, #{plot,jdbcType=VARCHAR}, 
+      #{buildnum,jdbcType=BIGINT}, #{unitnum,jdbcType=BIGINT}, #{roomnum,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.james.pojo.po.UserAddress" >
+    insert into user_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="plot != null" >
+        plot,
+      </if>
+      <if test="buildnum != null" >
+        buildnum,
+      </if>
+      <if test="unitnum != null" >
+        unitnum,
+      </if>
+      <if test="roomnum != null" >
+        roomnum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=BIGINT},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="plot != null" >
+        #{plot,jdbcType=VARCHAR},
+      </if>
+      <if test="buildnum != null" >
+        #{buildnum,jdbcType=BIGINT},
+      </if>
+      <if test="unitnum != null" >
+        #{unitnum,jdbcType=BIGINT},
+      </if>
+      <if test="roomnum != null" >
+        #{roomnum,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.james.pojo.po.UserAddressExample" resultType="java.lang.Integer" >
+    select count(*) from user_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user_address
+    <set >
+      <if test="record.aid != null" >
+        aid = #{record.aid,jdbcType=BIGINT},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=BIGINT},
+      </if>
+      <if test="record.plot != null" >
+        plot = #{record.plot,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buildnum != null" >
+        buildnum = #{record.buildnum,jdbcType=BIGINT},
+      </if>
+      <if test="record.unitnum != null" >
+        unitnum = #{record.unitnum,jdbcType=BIGINT},
+      </if>
+      <if test="record.roomnum != null" >
+        roomnum = #{record.roomnum,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user_address
+    set aid = #{record.aid,jdbcType=BIGINT},
+      uid = #{record.uid,jdbcType=BIGINT},
+      plot = #{record.plot,jdbcType=VARCHAR},
+      buildnum = #{record.buildnum,jdbcType=BIGINT},
+      unitnum = #{record.unitnum,jdbcType=BIGINT},
+      roomnum = #{record.roomnum,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.james.pojo.po.UserAddress" >
+    update user_address
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="plot != null" >
+        plot = #{plot,jdbcType=VARCHAR},
+      </if>
+      <if test="buildnum != null" >
+        buildnum = #{buildnum,jdbcType=BIGINT},
+      </if>
+      <if test="unitnum != null" >
+        unitnum = #{unitnum,jdbcType=BIGINT},
+      </if>
+      <if test="roomnum != null" >
+        roomnum = #{roomnum,jdbcType=BIGINT},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.james.pojo.po.UserAddress" >
+    update user_address
+    set uid = #{uid,jdbcType=BIGINT},
+      plot = #{plot,jdbcType=VARCHAR},
+      buildnum = #{buildnum,jdbcType=BIGINT},
+      unitnum = #{unitnum,jdbcType=BIGINT},
+      roomnum = #{roomnum,jdbcType=BIGINT}
+    where aid = #{aid,jdbcType=BIGINT}
+  </update>
+</mapper>
