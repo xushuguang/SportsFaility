@@ -50,6 +50,7 @@
         <quartz.version>2.2.2</quartz.version>
         <lucene.version>4.10.3</lucene.version>
         <IKAnalyzer.version>2012FF_u1</IKAnalyzer.version>
+        <jersey.version>1.19.1</jersey.version>
     </properties>
 
 
@@ -320,7 +321,12 @@
                 <artifactId>IKAnalyzer</artifactId>
                 <version>${IKAnalyzer.version}</version>
             </dependency>
-
+            <!-- 短信验证所需jar包-->
+            <dependency>
+                <groupId>com.sun.jersey</groupId>
+                <artifactId>jersey-bundle</artifactId>
+                <version>1.19.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

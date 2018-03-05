@@ -7,7 +7,7 @@ public class User {
 
     private String password;
 
-    private String phonenum;
+    private String mobile;
 
     private String comment;
 
@@ -35,12 +35,12 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getPhonenum() {
-        return phonenum;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setPhonenum(String phonenum) {
-        this.phonenum = phonenum == null ? null : phonenum.trim();
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
     }
 
     public String getComment() {
