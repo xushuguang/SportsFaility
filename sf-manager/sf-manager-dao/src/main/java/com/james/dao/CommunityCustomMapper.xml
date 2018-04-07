@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.james.dao.CommunityCustomMapper" >
+  <resultMap id="BaseResultMap" type="com.james.pojo.po.Community" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="plot" property="plot" jdbcType="VARCHAR" />
+    <result column="building" property="building" jdbcType="BIGINT" />
+    <result column="element" property="element" jdbcType="BIGINT" />
+    <result column="roomnum" property="roomnum" jdbcType="BIGINT" />
+  </resultMap>
+  <select id="countCommunitys" resultType="_long">
+    select count(1) from tb_community
+  </select>
+  <select id="listCommunitys" resultMap="BaseResultMap">
+    select id,plot,element,building,roomnum from tb_community
+    <choose>
+      <when test="order != null and order.sort != null and order.order != null">
+        <foreach collection="order.orderParams" item="item" open="order by " close="" separator=",">
+          ${item}
+        </foreach>
+      </when>
+      <otherwise>
+        order by id desc
+      </otherwise>
+    </choose>
+    limit #{page.offset},#{page.rows}
+  </select>
+</mapper>

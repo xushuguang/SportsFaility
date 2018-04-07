@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -94,6 +93,13 @@ public class RegisterAction {
         }
         return resultString;
     }
+
+    /**
+     * 验证验证码
+     * @param code
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/register/selectCode",method = RequestMethod.POST)
     public String selectCode(String code,HttpServletRequest request){
@@ -124,14 +130,14 @@ public class RegisterAction {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public ModelAndView register(User user){
-        ModelAndView mav = new ModelAndView();
-        int i = registerService.register(user);
-        if (i>0){
+    @RequestMapping(value = "/register/register",method = RequestMethod.POST)
+    public boolean register(User user){
+       boolean flag = false;
+       int i = registerService.register(user);
+       if (i>0){
             //注册成功
-            mav.setViewName("success");
+           flag = true;
         }
-        return mav;
+        return flag;
     }
 }

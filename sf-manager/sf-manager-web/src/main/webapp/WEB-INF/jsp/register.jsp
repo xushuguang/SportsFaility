@@ -59,7 +59,7 @@
                     <!--<button type="button" class="btn btn-default" id="getCode" value="点击获取验证码"/>-->
                     <input type="button" class="btn btn-default" id="getCode" value="点击获取验证码" />
                 </div>
-              <button type="submit" class="btn btn-lg btn-primary btn-block" onclick="register()">提交</button>
+              <button type="submit" class="btn btn-lg btn-primary btn-block" id="btn-register" onclick="register()">提交</button>
             </form>
         </div>
         <div class="col-md-4 column">
@@ -191,18 +191,37 @@
                     success: function (data) {
                         var str = JSON.parse(data);
                         var result = str.msg[0].result;
-                        alert(result);
-                        if (result = 0) {
+                        if (result == 0) {
                             alert("验证码已发送，请与30秒内输入");
-                        } else if (result = 1024) {
+                        } else if (result == 1024) {
                             alert("手机号格式有误");
-                        } else if (result = 1026) {
+                        } else if (result == 1026) {
                             alert("验证次数超出限制，请于次日再验证");
                         }}}
             )
         })
     });
     //提交表单
-    $('#form').submit();
+    $('form').submit(function () {
+        var username = $('#username').val();
+        var password = $('#password').val();
+        var mobile = $('#mobile').val();
+        var formData = new FormData();
+        formData.append('username',username);
+        formData.append('password',password);
+        formData.append('mobile',mobile);
+        $.ajax({
+            type:'POST',
+            url:'register/register',
+            data:formData,
+            contentType: false,//这里
+            processData: false,//这两个一定设置为false
+            success:function (flag) {
+                if (flag){
+                    $.messager.alert('消息', '注册成功！','info' )
+                }
+            }
+        })
+    });
 </script>
 </html>
